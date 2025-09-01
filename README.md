@@ -1,1 +1,1 @@
-https://github.com/Smallhanportfolio/smallhan_photography
+https://Smallhanportfolio/smallhan_photography
