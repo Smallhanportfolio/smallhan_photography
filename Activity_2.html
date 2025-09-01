@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Han</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="portfolio-page">
+    <header class="hero-header hero-header-plain">
+        <div class="header-top-bar">
+            <h1>Small Han</h1>
+            <nav class="main-nav">
+                <a href="index.html#menu">Menu</a>
+                <a href="About.html">About me</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Portfolio <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="portfolio_category1.html">Humanistic</a>
+                        <a href="portfolio_category2.html">Portrait</a>
+                        <a href="portfolio_category3.html">Landscape</a>
+                        <a href="portfolio_category4.html">Activity</a>
+                        <div class="dropdown-submenu">
+                         <a>Sports <i class="fas fa-caret-right"></i></a>
+                          <div class="submenu-content">
+                            <a href="sports_basketball.html">Basketball</a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <section id="category1-content">
+        <div class="grid">
+            <div class="grid-item"><a href="Activity/Activity_2/Activity_2_001.jpg" data-lightbox="category1"><img src="Activity/Activity_2/Activity_2_001.jpg"loading="lazy"></a></div>
+            <div class="grid-item"><a href="Activity/Activity_2/Activity_2_002.jpg" data-lightbox="category1"><img src="Activity/Activity_2/Activity_2_002.jpg"loading="lazy"></a></div>
+            <div class="grid-item"><a href="Activity/Activity_2/Activity_2_003.jpg" data-lightbox="category1"><img src="Activity/Activity_2/Activity_2_003.jpg"loading="lazy"></a></div>
+            <div class="grid-item"><a href="Activity/Activity_2/Activity_2_004.jpg" data-lightbox="category1"><img src="Activity/Activity_2/Activity_2_004.jpg"loading="lazy"></a></div>
+            <div class="grid-item"><a href="Activity/Activity_2/Activity_2_005.jpg" data-lightbox="category1"><img src="Activity/Activity_2/Activity_2_005.jpg"loading="lazy"></a></div>
+            <div class="grid-item"><a href="Activity/Activity_2/Activity_2_006.jpg" data-lightbox="category1"><img src="Activity/Activity_2/Activity_2_006.jpg"loading="lazy"></a></div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Small-Han. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            lightbox.option({
+                resizeDuration: 200,
+                wrapAround: true,
+                disableScrolling: true,
+                showImageNumberLabel: true,
+                fadeDuration: 300,
+                imageFadeDuration: 300
+            });
+            document.addEventListener('lightbox_opened', function() {
+                document.body.classList.add('no-scroll');
+            });
+            document.addEventListener('lightbox_closed', function() {
+                document.body.classList.remove('no-scroll');
+            });
+            const grid = document.querySelector('.grid');
+            if (grid) {
+                imagesLoaded(grid, () => {
+                    const masonry = new Masonry(grid, {
+                        itemSelector: '.grid-item',
+                        columnWidth: 240, // 將這裡從 '.grid-item' 改為固定的數值
+                        gutter: 10,
+                        percentPosition: false, // 將這裡改為 false，因為我們使用了固定的 columnWidth
+                        isFitWidth: true
+                    });
+                    const gridItems = document.querySelectorAll('.grid-item');
+                    gridItems.forEach(item => {
+                        item.classList.add('visible');
+                    });
+                });
+            }
+            const originalTitle = document.title;
+            const titleEl = document.querySelector('title');
+            if (titleEl) {
+                const titleObserver = new MutationObserver(() => {
+                    if (document.title !== originalTitle) {
+                        document.title = originalTitle;
+                    }
+                });
+                titleObserver.observe(titleEl, { childList: true });
+            }
+            const heroText = document.querySelector('.hero-text');
+            if (heroText) {
+                setTimeout(() => {
+                    heroText.classList.add('fade-in');
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>

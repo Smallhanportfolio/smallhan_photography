@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Han</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <header class="hero-header hero-header-plain">
+        <div class="header-overlay">
+            <div class="header-top-bar">
+                <h1>Small Han</h1>
+                <nav>
+                    <a href="index.html#menu">Menu</a>
+                    <a href="About.html">About me</a>
+                    <div class="dropdown">
+                      <a href="#" class="dropbtn">Portfolio <i class="fas fa-caret-down"></i></a>
+                      <div class="dropdown-content">
+                        <a href="portfolio_category1.html">Humanistic</a>
+                        <a href="portfolio_category2.html">Portrait</a>
+                        <a href="portfolio_category3.html">Landscape</a>
+                        <a href="portfolio_category4.html">Activity</a>
+                        <div class="dropdown-submenu">
+                         <a >Sports <i class="fas fa-caret-right"></i></a>
+                          <div class="submenu-content">
+                            <a href="sports_basketball.html">Basketball</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <a href="index.html#contact">Contact</a>
+                    
+                </nav>
+            </div>
+            
+        </div>
+    
+    </header>
+    
+
+    <footer>
+        <p>&copy; 2025 Small-Han. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js" defer></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            lightbox.option({
+                resizeDuration: 200, wrapAround: true, disableScrolling: false,
+                showImageNumberLabel: true, fadeDuration: 300, imageFadeDuration: 300
+            });
+            const grid = document.querySelector('.grid');
+            if (grid) {
+                imagesLoaded(grid, () => {
+                    new Masonry(grid, { itemSelector: '.grid-item', columnWidth: '.grid-item', gutter: 10, percentPosition: true });
+                });
+            }
+            // 鎖住分頁標題，如果需要
+            const originalTitle = document.title;
+            const titleEl = document.querySelector('title');
+            if (titleEl) {
+                const titleObserver = new MutationObserver(() => {
+                    if (document.title !== originalTitle) {
+                        document.title = originalTitle;
+                    }
+                });
+                titleObserver.observe(titleEl, { childList: true });
+            }
+        });
+    </script>
+</body>
+</html>
