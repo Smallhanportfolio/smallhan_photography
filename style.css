@@ -380,6 +380,44 @@ body.no-scroll {
     height: 100vh;
 }
 
+/* 主要內容容器的樣式 */
+.about-container {
+    display: flex; /* 讓子元素（文字和圖片）並排顯示 */
+    justify-content: center; /* 讓內容水平居中 */
+    align-items: center; /* 讓內容垂直居中 */
+    flex-wrap: wrap; /* 允許項目在小螢幕上換行 */
+    padding: 50px 20px; /* 在內容周圍增加間距 */
+    max-width: 1200px; /* 限制在大螢幕上的寬度 */
+    margin: 0 auto; /* 讓容器在頁面中居中 */
+    margin-top: 100px;
+    /*flex-direction: row-reverse; */
+}
+
+/* 文字欄位的樣式 */
+.about-text {
+    flex: 1; /* 讓這個項目可以伸展並佔據空間 */
+    padding-right: 40px; /* 在文字和圖片之間增加間距 */
+    line-height: 1.6; /* 增加行距以提高可讀性 */
+    font-size: 0.9em;
+    max-width: 800px; /* 可選：限制文字區塊的寬度 */
+    color: #ffffff;
+    text-align: left; 
+    
+}
+
+/* 圖片欄位的樣式 */
+.about-image {
+    flex: 1; /* 讓這個項目也可以伸展 */
+    max-width: 600px; /* 限制圖片欄位的寬度 */
+    text-align: center; /* 圖片居中顯示 */
+}
+
+/* 讓圖片本身具有響應式特性 */
+.about-image img {
+    max-width: 100%; /* 確保圖片不會超出其容器 */
+    height: auto; /* 保持圖片的長寬比 */
+    display: block; /* 移除圖片下方多餘的空間 */
+}
 @media screen and (max-width: 768px) {
     body {
         font-size: 15px;
@@ -549,6 +587,7 @@ body.no-scroll {
         flex-basis: calc(100% - 20px);
         max-width: calc(100% - 20px);
         margin-right: 0;
+        margin-bottom: 8px;
     }
 
     .hero-header-plain {
@@ -603,6 +642,14 @@ body.no-scroll {
     body.portfolio-page section {
         padding-top: 160px;
     }
+    .about-container {
+        flex-direction: column; /* 將文字和圖片垂直堆疊 */
+    }
+    .about-text {
+        padding-right: 0;
+        margin-bottom: 30px; /* 在文字和圖片之間增加間距 */
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -650,6 +697,26 @@ body.no-scroll {
         flex-basis: calc(33.333% - 20px);
         max-width: calc(33.333% - 20px);
     }
+}
+@media screen and (min-width: 1700px) {
+    /* 增加頁面主要容器的最大寬度，讓圖片排得更寬 */
+    section {
+        max-width: 2000px; /* 您可以根據需求調整這個值 */
+    }
+
+    /* 調整 grid 容器的邊距，減少兩側空白 */
+    .grid {
+        padding: 0 20px; /* 這裡設定了左右 10px 的內邊距 */
+    }
+
+    /* 確保 grid 項目在更大的容器中能正確顯示 */
+    .grid-item {
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: 20px;
+        
+    }
+    
 }
 /* 容器樣式：確保相對定位 */
 .grid-item a {

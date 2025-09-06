@@ -36,8 +36,8 @@
     </header>
     <section id="category1-content">
         <div class="grid">
-         <div class="grid-item"><a href="sports_basketball_u19.html"><img src="images/sample1.jpg" ><div class="image-overlay"><div class="overlay-text">U19</div></div></a></div>
-            
+         <div class="grid-item"><a href="sports_basketball_u19.html"><img src="images/U19.jpg" ><div class="image-overlay"><div class="overlay-text">U19</div></div></a></div>
+         <div class="grid-item"><a href="sports_basketball_XBL.html"><img src="images/XBL.jpg" ><div class="image-overlay"><div class="overlay-text">XBL</div></div></a></div>  
         </div>
     </section>
     <footer>
@@ -66,13 +66,23 @@
             const grid = document.querySelector('.grid');
             if (grid) {
                 imagesLoaded(grid, () => {
-                    const masonry = new Masonry(grid, {
+                    let msnryOptions = {
                         itemSelector: '.grid-item',
-                        columnWidth: 240, // 將這裡從 '.grid-item' 改為固定的數值
-                        gutter: 10,
-                        percentPosition: false, // 將這裡改為 false，因為我們使用了固定的 columnWidth
+                        percentPosition: false,
                         isFitWidth: true
-                    });
+                    };
+
+                    // 根據螢幕寬度設定不同的 Masonry 參數
+                    if (window.innerWidth >= 1700) {
+                        msnryOptions.columnWidth = 350; // 調整這裡來控制照片寬度
+                        msnryOptions.gutter = 10; // 調整這裡來控制水平間距
+                    } else {
+                        msnryOptions.columnWidth = 240;
+                        msnryOptions.gutter = 10; // 一般螢幕的水平間距
+                    }
+
+                    const masonry = new Masonry(grid, msnryOptions);
+
                     const gridItems = document.querySelectorAll('.grid-item');
                     gridItems.forEach(item => {
                         item.classList.add('visible');
